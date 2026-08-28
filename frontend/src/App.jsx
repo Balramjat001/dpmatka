@@ -673,23 +673,7 @@ function AdminDashboard() {
   }, [])
 
   return (
-    <div className="admin-shell">
-      <aside className="admin-sidebar">
-        <h2>Admin</h2>
-        <nav>
-          <Link to="/admin">Dashboard</Link>
-          <Link to="/admin/users">Manage Users</Link>
-          <Link to="/admin/registrations">Registration Requests</Link>
-          <Link to="/admin/results">Manage Result</Link>
-          <Link to="/admin/bets">Manage Bets</Link>
-          <Link to="/admin/games">Manage Games</Link>
-          <Link to="/admin/transactions">All Transactions</Link>
-          <Link to="/admin/deposits">Deposit Requests</Link>
-          <Link to="/admin/withdrawals">Withdrawal Queue</Link>
-          <Link to="/admin/settings">Settings</Link>
-        </nav>
-      </aside>
-      <main className="admin-main">
+    <AdminLayout>
         <div className="stats-grid">
           <div className="stat-card"><span>Total Users</span><strong>{stats.users}</strong></div>
           <div className="stat-card"><span>Total Wallet</span><strong>{formatCurrency(stats.total_wallet)}</strong></div>
@@ -697,8 +681,7 @@ function AdminDashboard() {
           <div className="stat-card"><span>Payment Queue</span><strong>{stats.payment_queue}</strong></div>
           <div className="stat-card"><span>Withdrawal Queue</span><strong>{stats.withdrawal_queue}</strong></div>
         </div>
-      </main>
-    </div>
+    </AdminLayout>
   )
 }
 
