@@ -28,7 +28,8 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
-    CORS(app, resources={r'/api/*': {'origins': os.getenv('CORS_ORIGINS', 'http://localhost:5173').split(',')}}, supports_credentials=True)
+    cors_origins = os.getenv('CORS_ORIGINS', '*')
+    CORS(app, resources={r'/api/*': {'origins': cors_origins.split(',') if cors_origins != '*' else '*'}}, supports_credentials=False)
     limiter.init_app(app)
 
     from app.routes.auth import auth_bp
